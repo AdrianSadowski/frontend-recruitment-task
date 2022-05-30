@@ -2,6 +2,7 @@ const { src, dest, watch, series, parallel } = require('gulp');
 
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
+const dartSass = require("dart-sass");
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
@@ -9,6 +10,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 var replace = require('gulp-replace');
 
+sass.compiler = dartSass;
 // File paths
 const files = { 
     scssPath: 'src/scss/**/*.scss',
