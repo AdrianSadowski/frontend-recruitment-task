@@ -107,3 +107,23 @@ $color-background-button: #E4C1AE;
 }
 
 
+@media (min-width: 769px) {
+  .main{
+    margin-top: 40px;
+    flex-direction: row;
+
+    .description{
+      padding-left: 40px;
+      text-align: left;
+      align-items: flex-start;
+    }
+    .popup-content{
+      width: 60%;
+      text-align: left;
+      h2, p {
+        padding-left: 20%;
+      }
+    }
+    
+  }
+}
