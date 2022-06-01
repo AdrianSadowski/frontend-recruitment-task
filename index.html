@@ -15,17 +15,15 @@
         <div class="description">
             <h1 class="title">Lorem Ipsum</h1>
             <p class="copy">Infinitely scalable, feature-rich and cloud-native data management and protection for modern and legacy infrastructures and SaaS platforms, managed via a single app with no hardware required.</p>
-            <button class="description-button">Button</button>
+            <button class="button" id="open-button">Button</button>
         </div>
-        <div class="shadow">
+        <div class="shadow" id="overlay">
         </div>
-        <div class="popup-content">
+        <div class="popup-content" id="popup-content">
             <h2>Alert!</h2>
-            <p>You have clicked <span id="pop-value"></span> to related button</p>
-            <a class="close" href="#"></a>
-            <div class="x-button">
-
-            </div>
+            <p>You have clicked <span id="pop-value">x</span> to related button</p>
+            <button class="button" id="reset-button">RESET</button>
+            <a class="close" id='close-button' href="#"></a>
         </div>
     </section>
     <script src="./dist/all.js"></script>

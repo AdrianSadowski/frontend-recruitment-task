@@ -20,6 +20,19 @@ $color-background-button: #E4C1AE;
       object-fit: cover;
     }
   }
+  .button{
+    background: $color-background-button;
+    color: $color-white;
+    width: 128px;
+    height: 48px;
+    gap: 10px;
+    padding: 16px 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: none;
+    border-radius: 32px;
+  }
   .description{
     margin-top: 30px;
     color: $color-black;
@@ -39,27 +52,20 @@ $color-background-button: #E4C1AE;
       font-size: 16px;
       line-height: 150%;
     }
-
-    .description-button{
-      background: $color-background-button;
-      color: $color-white;
-      width: 128px;
-      height: 48px;
-      gap: 10px;
-      padding: 16px 40px;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      border: none;
-      border-radius: 32px;
-    }
   }
   .shadow{
+    display: none;
     position: absolute;
     background-color: #121212;
     opacity: 0.5;
     width: 100%;
     height: 150%;
+  }
+  .shadow.active{
+    display: block;
+  }
+  .popup-content.active{
+    transform: translate(-50%, -50%) scale(1);
   }
   .popup-content{
     background: $color-white;
@@ -67,8 +73,9 @@ $color-background-button: #E4C1AE;
     width: 80%;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     padding: 40px 0;
+    transition: 200ms ease-in-out;
     h2{
       font-size: 42px;
       font-weight: 700;
@@ -80,6 +87,12 @@ $color-background-button: #E4C1AE;
       span {
         font-weight: 600;
       }
+    }
+    .button{
+      display: none;
+    }
+    .button.active{
+      display: block;
     }
     .close {
       position: absolute;
