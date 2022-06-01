@@ -5,8 +5,9 @@ const infoClick = document.querySelector('#pop-value');
 const popup = document.querySelector('#popup-content');
 const resetButton = document.querySelector('#reset-button');
 const loading = document.querySelector('#loader');
+const dvTable = document.querySelector('#dvTable');
 let clickedResults = JSON.parse(localStorage.getItem('click'));
-console.log(clickedResults);
+let customers = [];
 
 getCountTimes();
 
@@ -16,7 +17,6 @@ function getCountTimes() {
   }
   if (clickedResults >= 5) {
     resetButton.classList.add('active');
-    console.log('button');
   }
   infoClick.innerHTML = clickedResults;
 }
@@ -57,23 +57,25 @@ function addCountTimes() {
 }
 
 function fetchData(){
-  loading.classList.remove('finished');
-  //setTimeout dodany celowo aby można było zobaczyć animację ładowania danych
-  setTimeout(function () {
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(data => {
-      GenerateTable(data);
-      loading.classList.add('finished');
-    })
-  }, 3000);
-
+  if(customers.length == 0) {
+    /// timeOut dodany calowy aby było widać animację ładowania
+    setTimeout(function () {
+      loading.classList.remove('end');
+      fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        loading.classList.add('end');
+        GenerateTable(data);
+      })
+    }, 3000);
+  } else{
+    return null;
+  }
 }
 
 function GenerateTable(data) {
   const table = document.createElement('TABLE');
   table.border = '1';
-  let customers = [];
   customers.push(['NAME', 'EMAIL', 'ADRESS', 'PHONE', 'COMPANY']);
   data.map(item => {
     let adress = `${item.address.city}, ${item.address.street}, ${item.address.suite}`;
@@ -89,7 +91,6 @@ function GenerateTable(data) {
       cell.innerHTML = customers[i][j];
     }
   }
-  const dvTable = document.querySelector('#dvTable');
   dvTable.innerHTML = '';
   dvTable.appendChild(table);
 }

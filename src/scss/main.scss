@@ -124,7 +124,8 @@ $color-background-button: #E4C1AE;
     }
 
     // Loader
-    .loading.finished{
+
+    .loading.end{
       display: none;
     }
     .loading{
@@ -190,7 +191,7 @@ $color-background-button: #E4C1AE;
     .popup-content{
       .table{
         display: block;
-        padding-top: 20px;
+        padding: 20px 20px 0 20px;
         table{
           margin: auto;
         }
