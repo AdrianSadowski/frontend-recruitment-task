@@ -17,14 +17,23 @@
             <p class="copy">Infinitely scalable, feature-rich and cloud-native data management and protection for modern and legacy infrastructures and SaaS platforms, managed via a single app with no hardware required.</p>
             <button class="button" id="open-button">Button</button>
         </div>
-        <div class="shadow" id="overlay"  onclick="closePopup()">
+        <div class="shadow" id="overlay">
         </div>
         <div class="popup-content" id="popup-content">
             <h2>Alert!</h2>
-            <p>You have clicked <span id="pop-value">x</span> to related button</p>
+            <p>You have clicked <span id="pop-value">x</span><span> times </span> to related button</p>
             <button class="button" id="reset-button">RESET</button>
             <a class="close" id='close-button' href="#"></a>
+            <div class="loading" id="loader">
+                <h3 class='loader_title'>Loading . . .</h3>
+                <div class='loader_wrapper'>
+                  <span class='loader'>
+                    <span class='loader_inner'></span>
+                  </span>
+                </div>
+            </div>
+            <div class="table" id="dvTable"></div>
         </div>
     </section>
-    <script src="./dist/all.js"></script>
+    <script src="./dist/all.js" type="module"></script>
 </body>
