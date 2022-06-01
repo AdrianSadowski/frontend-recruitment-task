@@ -23,7 +23,7 @@ function getCountTimes() {
 
 overlay.addEventListener('click', () => {
   closePopup();
-})
+});
 openButton.addEventListener('click', () => {
   openPopup(popup);
   addCountTimes();
@@ -51,24 +51,24 @@ function closePopup() {
 }
 
 function addCountTimes() {
-  clickedResults++
+  clickedResults++;
   localStorage.setItem('click', JSON.stringify(clickedResults));
   getCountTimes();
 }
 
-function fetchData(){
-  if(customers.length == 0) {
+function fetchData() {
+  if (customers.length == 0) {
     /// timeOut dodany calowy aby było widać animację ładowania
     setTimeout(function () {
       loading.classList.remove('end');
       fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(data => {
-        loading.classList.add('end');
-        GenerateTable(data);
-      })
+        .then((response) => response.json())
+        .then((data) => {
+          loading.classList.add('end');
+          GenerateTable(data);
+        });
     }, 3000);
-  } else{
+  } else {
     return null;
   }
 }
@@ -77,9 +77,15 @@ function GenerateTable(data) {
   const table = document.createElement('TABLE');
   table.border = '1';
   customers.push(['NAME', 'EMAIL', 'ADRESS', 'PHONE', 'COMPANY']);
-  data.map(item => {
+  data.map((item) => {
     let adress = `${item.address.city}, ${item.address.street}, ${item.address.suite}`;
-    customers.push([item.name, item.email, adress, item.phone, item.company.name]);
+    customers.push([
+      item.name,
+      item.email,
+      adress,
+      item.phone,
+      item.company.name,
+    ]);
   });
 
   const columnCount = customers[0].length;
@@ -94,4 +100,3 @@ function GenerateTable(data) {
   dvTable.innerHTML = '';
   dvTable.appendChild(table);
 }
-
